@@ -1,5 +1,3 @@
-package 数组;
-
 /**
  * @author lyq on 2020-07-15 9:14 下午
  * @desc 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
@@ -17,7 +15,7 @@ public class 买卖股票的最佳时机_1 {
             if (prices[i] < min) {
                 min = prices[i];
             } else {
-
+                res = Math.max(res, prices[i] - min);
             }
         }
         return res;
