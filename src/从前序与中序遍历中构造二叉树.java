@@ -25,6 +25,8 @@ public class 从前序与中序遍历中构造二叉树 {
     }
 
     /**
+     * （1）前序遍历序列的第一个元素是根节点
+     * （2）无论是前序遍历还是中序遍历，根节点的左右子树元素个数一定。
      * @param preOrder
      * @param pre_left 前序遍历左边界
      * @param pre_right 前序遍历右边界
