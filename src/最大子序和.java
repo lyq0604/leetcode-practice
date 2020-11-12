@@ -11,14 +11,14 @@ public class 最大子序和 {
 
     public static int maxSum(int[] arr) {
         int res = arr[0];
-        int tmp = arr[0];
+        int sum = arr[0];
         for (int i=1;i<arr.length;i++) {
-            if (tmp<0) {
-                tmp = arr[i];
+            if (sum < 0) {
+                sum = arr[i];
             } else {
-                tmp += arr[i];
+                sum += arr[i];
             }
-            res = Math.max(res, tmp);
+            res = Math.max(res, sum);
         }
         return res;
     }
