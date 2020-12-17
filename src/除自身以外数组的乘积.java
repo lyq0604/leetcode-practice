@@ -14,7 +14,7 @@ public class 除自身以外数组的乘积 {
         // 存放该元素左侧各元素乘积
         int[] left = new int[len];
         left[0] = 1;
-        for (int i = 1; i< len; i++) {
+        for (int i = 1; i < len; i++) {
             left[i] = left[i-1] * nums[i-1];
         }
         // 存放该元素右侧各元素乘积

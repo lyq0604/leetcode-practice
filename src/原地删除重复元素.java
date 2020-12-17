@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class 原地删除重复元素 {
 
     public static void main(String[] args) {
-        int[] arr = {1,2};
-        System.out.println(solve2(arr));
+        int[] arr = {1,1,2};
+        System.out.println(solve3(arr));
     }
 
     /**
@@ -54,6 +54,18 @@ public class 原地删除重复元素 {
             }
         }
         return Arrays.copyOfRange(arr, 0, x).length;
+    }
+
+    public static int solve3(int[] arr) {
+        int n = 0;
+        for (int i=1;i<arr.length;i++) {
+            if (arr[i] == arr[n]) {
+                continue;
+            } else {
+                arr[++n] = arr[i];
+            }
+        }
+        return n+1;
     }
 
 }

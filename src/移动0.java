@@ -10,16 +10,33 @@ public class 移动0 {
     }
 
     public static void moveZeroes(int[] nums) {
-        int zeroNum = 0;
-        for (int i=0;i<nums.length;i++) {
+        // int zeroNum = 0;
+        // for (int i=0;i<nums.length;i++) {
+        //     if (nums[i] == 0) {
+        //         zeroNum++;
+        //     } else {
+        //         nums[i-zeroNum] = nums[i];
+        //     }
+        // }
+        // for (int i=0;i<zeroNum;i++) {
+        //     nums[nums.length-1-i] = 0;
+        // }
+        int len = nums.length;
+        // 记录0的个数
+        int n = 0;
+        for (int i=0;i<len;i++) {
             if (nums[i] == 0) {
-                zeroNum++;
-            } else {
-                nums[i-zeroNum] = nums[i];
+                n++;
+            }
+            if (i == 0) continue;
+            if (n > 0 && nums[i] != 0) {
+                nums[i-n] = nums[i];
             }
         }
-        for (int i=0;i<zeroNum;i++) {
-            nums[nums.length-1-i] = 0;
+        if (n > 0) {
+            for (int i=1;i<=n;i++) {
+                nums[len-i] = 0;
+            }
         }
     }
 
