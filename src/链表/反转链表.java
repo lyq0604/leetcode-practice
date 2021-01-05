@@ -1,14 +1,10 @@
+package 链表;
+
 /**
  * @author lyq on 2020-09-14 8:50 下午
  * @desc 单列表反转
  */
 public class 反转链表 {
-
-    private static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) { val = x; }
-    }
 
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
@@ -20,7 +16,7 @@ public class 反转链表 {
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
-        node1 = reserve2(node1);
+        node1 = reverse2(node1);
     }
 
     /**
@@ -29,16 +25,13 @@ public class 反转链表 {
      * @return
      */
     public static ListNode reverse1(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
         ListNode pre = null;
         ListNode cur = head;
         while (cur != null) {
-            ListNode nextNode = cur.next;
+            ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
-            cur = nextNode;
+            cur = next;
         }
         return pre;
     }
@@ -48,9 +41,9 @@ public class 反转链表 {
      * @param head
      * @return
      */
-    public static ListNode reserve2(ListNode head) {
+    public static ListNode reverse2(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode p = reserve2(head.next);
+        ListNode p = reverse2(head.next);
         head.next.next = head;
         head.next = null;
         return p;
