@@ -23,8 +23,8 @@ public class 前中后序遍历 {
         node3.setLeft(node6);
         node3.setRight(node7);
 
-        // preSearch(node1);
-        // midSearch(node1);
+        preSearch(node1);
+        midSearch(node1);
         postSearch(node1);
     }
 
@@ -34,15 +34,14 @@ public class 前中后序遍历 {
      */
     private static void preSearch(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
-        stack.add(root);
-        while (!stack.isEmpty()) {
-            TreeNode top = stack.pop();
-            System.out.println(top.val);
-            if (top.right != null) {
-                stack.add(top.right);
-            }
-            if (top.left != null) {
-                stack.add(top.left);
+        while (root != null || !stack.isEmpty()) {
+            if (root != null) {
+                System.out.println(root.val);
+                stack.add(root);
+                root = root.left;
+            } else {
+                TreeNode top = stack.pop();
+                root = top.right;
             }
         }
     }
@@ -71,21 +70,21 @@ public class 前中后序遍历 {
      */
     private static void postSearch(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
-        // 用于记录上一遍历节点
-        TreeNode pre = null;
+        TreeNode last = null;
         while (root != null || !stack.isEmpty()) {
-            while (root != null) {
+            if (root != null) {
                 stack.add(root);
                 root = root.left;
-            }
-            root = stack.pop();
-            if (root.right == null || root.right == pre) {
-                System.out.println(root.val);
-                pre = root;
-                root = null;
             } else {
-                stack.add(root);
-                root = root.right;
+                TreeNode top = stack.peek();
+                // 防止死循环
+                if (top.right != null && top.right != last) {
+                    root = top.right;
+                } else {
+                    last = top;
+                    stack.pop();
+                    System.out.println(top.val);
+                }
             }
         }
     }
