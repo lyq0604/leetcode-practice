@@ -7,7 +7,7 @@ import java.util.List;
  * @author lyq on 2021-01-24 下午9:46
  * @desc 找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。
  */
-public class 组合总和 {
+public class 组合总和I {
 
     private static List<List<Integer>> res = new ArrayList<>();
 
